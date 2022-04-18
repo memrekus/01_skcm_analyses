@@ -266,9 +266,10 @@ gender_limma_res = limma_pipeline(
 ```{r}
 
 clinical_data = colData(tcga_data)
+
 group = factor(clinical_data$definition)
 
-group = relevel(group, ref="Solid Tissue Normal")
+group = relevel(group, ref="Metastatic")
 
 summary(group)
 ```
@@ -293,7 +294,9 @@ dge = DGEList( # creating a DGEList object
 
 # filtering
 keep = filterByExpr(dge,design) # defining which genes to keep
+
 dge = dge[keep,,keep.lib.sizes=FALSE] # filtering the dge object
+
 rm(keep) #  use rm() to remove objects from memory if you don't need them anymore
 
 ```
@@ -303,9 +306,11 @@ rm(keep) #  use rm() to remove objects from memory if you don't need them anymor
 ```{r}
 
 dge = calcNormFactors(dge,method="TMM")
+
 v = voom(dge,design,plot=TRUE)
 
 fit = lmFit(v, design)
+
 fit = eBayes(fit)
 
 topGenes = topTable(fit, coef=1, sort.by="p")
