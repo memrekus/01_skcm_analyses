@@ -1,49 +1,10 @@
-# History files
-.Rhistory
-.Rapp.history
 
-# Session Data files
-.RData
-.RDataTmp
-
-# User-specific files
-.Ruserdata
-
-# Example code in package build process
-*-Ex.R
-
-# Output files from R CMD build
-/*.tar.gz
-
-# Output files from R CMD check
-/*.Rcheck/
-
-# RStudio files
-.Rproj.user/
-
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
-
-# knitr and R markdown default cache directories
-*_cache/
-/cache/
-
-# Temporary files created by R markdown
-*.utf8.md
-*.knit.md
-
-# R Environment Variables
-.Renviron
-
-# pkgdown site
-docs/
-
-# translation temp files
-po/*~
-
-# RStudio Connect folder
-rsconnect/
+GDCdata/TCGA-SKCM/harmonized/Transcriptome_Profiling/Gene_Expression_Quantification/ff327399-14e8-4926-a7f9-27318dc5dd76/2bd0477f-40af-4969-9291-c05ab3d55268.rna_seq.augmented_star_gene_counts.tsv
+*.tsv
+limma_res.RDS
+MANIFEST.txt
+TCGA-SKCM_clinical.csv
+tcga_data.RDS
+MANIFEST.txt
+MANIFEST.txt
+TCGA-SKCM_clinical.csv
