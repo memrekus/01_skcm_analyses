@@ -1,0 +1,121 @@
+---
+title: "tcga_skcm2"
+author: "memrekus"
+date: "4/18/2022"
+output: html_document
+---
+
+#Summary of the Project
+
+__Immune genes:
+CD3E, CD8A, CD4, FOXP3, IFNG, GZMB, PDCD1, LAG3, CTLA4, CD274 (PD-L1), TOX2, TIM3, HAVCR
+
+Goal:
+Identify miRNAs and lncRNAs that can regulate the same immune-associated gene (possibly by a competing endogenous RNA mechanism)__
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Load Libraries
+
+```{r}
+
+library("TCGAbiolinks")
+library("limma")
+library("edgeR")
+library("glmnet")
+library("factoextra")
+library("FactoMineR")
+library("caret")
+library("SummarizedExperiment")
+library("gplots")
+library("survival")
+library("survminer")
+library("RColorBrewer")
+library("gProfileR")
+library("genefilter")
+
+
+```
+
+#Download and prepare RNAseq data
+
+```{r}
+
+query_RNA <- GDCquery(
+  
+  project = "TCGA-SKCM",
+                      
+  data.category = "Transcriptome Profiling",
+  
+  experimental.strategy = "RNA-Seq",
+  
+  workflow.type = "STAR - Counts",
+  
+  data.type = "Gene Expression Quantification")
+
+GDCdownload(query_RNA)
+
+Data_RNA<-GDCprepare(query_RNA)
+```
+
+#Download and prepare miRNAseq data
+
+```{r}
+
+query_miRNA <- GDCquery(
+  
+  project = "TCGA-SKCM",
+   
+  data.category = "Transcriptome Profiling",
+
+  experimental.strategy = "miRNA-Seq",
+   
+  workflow.type = "BCGSC miRNA Profiling",
+
+  data.type = "miRNA Expression Quantification")
+  
+GDCdownload(query_miRNA)
+
+Data_miRNA<-GDCprepare(query_miRNA)
+
+```
+
+#Download clinical subtype data (including survival outcomes)
+
+```{r}
+
+query_clinical <- GDCquery(
+  
+  project = "TCGA-SKCM",
+                      
+  data.category = "Clinical",
+  
+  data.type = "Clinical Supplement")
+
+GDCdownload(query_clinical)
+
+Data_clinical<-GDCprepare(query_clinical)
+
+# clin <- GDCquery_clinic("TCGA-SKCM", type = "clinical", save.csv = F)
+
+```
+
+#Calculate pairwise correlations between immune genes and lncRNAs
+
+```{r}
+
+
+
+```
+
+#Calculate pairwise correlations between immune genes (see description) and miRNAs
+
+```{r}
+
+
+
+```
+
+
