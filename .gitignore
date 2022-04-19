@@ -8,3 +8,5 @@ tcga_data.RDS
 MANIFEST.txt
 MANIFEST.txt
 TCGA-SKCM_clinical.csv
+*.xml
+*.txt

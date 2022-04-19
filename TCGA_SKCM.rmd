@@ -82,7 +82,7 @@ query <- GDCquery(
 
 ```{r}
 
-clin <- GDCquery_clinic("TCGA-SKCM", type = "clinical", save.csv = TRUE)
+clin <- GDCquery_clinic("TCGA-SKCM", type = "clinical", save.csv = F)
 
 ```
 
