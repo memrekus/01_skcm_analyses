@@ -1,0 +1,78 @@
+---
+title: "Merge the Data"
+author: "memrekus"
+date: "6/2/2022"
+output: html_document
+---
+
+
+__Merging the RNAseq, miRNAseq and Subtype data__
+
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#Load Libraries
+
+
+```{r}
+
+library("TCGAbiolinks")
+library("limma")
+library("edgeR")
+library("glmnet")
+library("factoextra")
+library("FactoMineR")
+library("caret")
+library("SummarizedExperiment")
+library("gplots")
+library("survival")
+library("survminer")
+library("RColorBrewer")
+library("gProfileR")
+library("genefilter")
+library("data.table")
+library("dplyr")
+library("tidyverse")
+```
+
+
+#Loading the prepared data
+
+
+```{r}
+
+load(file='Data_RNA.rda')
+
+load(file='Data_miRNA.rda')
+
+load(file='Data_Subtype.rda')
+
+```
+
+
+#Binding the data to each other
+
+
+```{r}
+
+total<-merge(x=Data_RNA,y=Data_Subtype,by=0, all=TRUE)
+
+total= total %>% left_join(Data_miRNA,by="Row.names")
+
+#total[is.na(total)] <- 0                 # replace NA values
+
+save(total,file = "total.Rda")
+
+```
+
+#Remove 
+
+```{r}
+
+rm(Data_miRNA,Data_RNA,Data_Subtype)
+
+```
+
